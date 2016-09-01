@@ -16,7 +16,7 @@ Progress:
 
 * rspec unit tests **- ToDo**
 
-* jsonlint check on databag files. **- ToDo**
+* jsonlint check on databag files. **- DONE**
 
 * Use sample ( by your choise ) schema file(or files) for schemas, keep schema files as cookbook files. **- DONE**
 
