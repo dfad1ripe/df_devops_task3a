@@ -8,6 +8,10 @@ Progress:
 
 * configures iptables to enable access to mysql. **- DONE**
 
+* sets up apache and provides HTTP access to mysql dumps folder. **- DONE**
+
+* configures iptables to enable access to httpd. **- DONE**
+
 * Cookstyle syntax check and foodcritic with 0 errors. **- DONE**
 
 * rspec unit tests **- ToDo**

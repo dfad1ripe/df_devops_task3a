@@ -130,7 +130,7 @@ backup_dir = '/opt/backups'
 directory backup_dir do
   owner 'backup'
   group 'backup'
-  mode '0700'
+  mode '0755'
   action :create
 end
 
@@ -165,6 +165,25 @@ end
 execute 'iptables prefix' do
   command 'echo "*filter" > /etc/sysconfig/iptables'
   not_if 'grep *filter /etc/sysconfig/iptables'
+end
+
+#
+# Remove COMMIT from iptables config file
+
+execute 'remove commit step 1' do
+  command "grep -v COMMIT /etc/sysconfig/iptables > \
+#{Chef::Config['file_cache_path']}/iptables"
+  not_if "/sbin/iptables --list -n | grep dpt:#{mysql_port} | grep ACCEPT"
+end
+
+execute 'remove commit step 2' do
+  command "cp #{Chef::Config['file_cache_path']}/iptables \
+/etc/sysconfig/iptables"
+  only_if { ::File.exist?("#{Chef::Config['file_cache_path']}/iptables") }
+end
+
+file "#{Chef::Config['file_cache_path']}/iptables" do
+  action :delete
 end
 
 #
