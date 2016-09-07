@@ -1,8 +1,9 @@
 require 'chefspec'
+require 'chefspec/berkshelf'
 
 describe 'Task3::default' do
   let(:chef_run) do
-    runner = ChefSpec::ServerRunner.new
+    runner = ChefSpec::SoloRunner.new
     runner.converge(described_recipe)
   end
 
