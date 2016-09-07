@@ -5,9 +5,9 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at https://docs.chef.io/inspec_reference.html
 
-#describe selinux do
-#  it { should be_disabled }
-#end
+# describe selinux do
+#   it { should be_disabled }
+# end
 
 describe package 'mysql-community-server' do
   it { should be_installed }
@@ -61,5 +61,5 @@ end
 # not default Apache welcome page.
 
 describe command 'curl -L Task3' do
-  its('stdout') { should match /Last modified/ }
+  its('stdout') { should match 'Last modified' }
 end

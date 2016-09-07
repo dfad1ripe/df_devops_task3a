@@ -19,18 +19,15 @@ include_recipe 'selinux::disabled'
 
 include_recipe 'yum_mysql_community'
 
-mysql_pwd = 'devops'
+mysql_root_bag = search(:db_users, 'id:root').first
+mysql_pwd = mysql_root_bag['password']
 
-# For future, hashed with SHA-512:
-# 2e04c978070fb9756cde6a684aebd608c330ab6734aac6e6f52c642191
-# 32cc383e0d00dd31bc6a696c7a14fd69e2c83a8800bb54148b6769de19f9bb1098806d
-
-mysql_port = '3306' # it's used few times later
+mysql_port = node['Task3']['mysql']['port']
 
 mysql_service 't3' do
   bind_address '0.0.0.0'
   port mysql_port
-  version '5.6.29-2'
+  version node['Task3']['mysql']['version']
   # Because 5.7 is not available in mysql_community_* packages yet,
   # and just '5.6' conflicts with current mysql_community_devel.
   initial_root_password mysql_pwd
@@ -41,14 +38,14 @@ end
 # As we need to use mysqldump binary in the future, we have to address
 # correct MySQL socket.
 
-mysql_socket = '-S /var/run/mysql-t3/mysqld.sock'
+mysql_socket = "-S /var/run/#{node['Task3']['mysql']['instance_name']}\
+/mysqld.sock"
 
 #
 # We need to install specific version of mysql_community_devel.
 
 package 'mysql-community-devel' do
-  version '5.6.29-2.el6'
-  # allow_downgrade true
+  version node['Task3']['mysql']['version'] + '.el6'
   action :install
 end
 
@@ -68,11 +65,9 @@ mysql_connection_info = {
 #
 # Create mysql users
 
-db_users = data_bag('db_users')
-db_users.each do |dbu|
-  db_user = data_bag_item('db_users', dbu)
-  db_username = db_user['username']
-  mysql_database_user db_username do
+db_users = node['Task3']['mysql']['db_users']
+db_users.each do |db_user|
+  mysql_database_user db_user do
     connection mysql_connection_info
     password   'devops'
     action     :create
@@ -92,10 +87,8 @@ end
 #
 # Create databases
 
-db_dbs = data_bag('db_dbs')
-db_dbs.each do |dbi|
-  db = data_bag_item('db_dbs', dbi)
-  db_name = db['dbname']
+db_dbs = node['Task3']['mysql']['db_dbs']
+db_dbs.each do |db_name|
   mysql_database db_name do
     connection mysql_connection_info
     action :create
@@ -108,11 +101,21 @@ end
 # An alternative is to use mysql user that *is* created by
 # mysql community code.
 
+backup_bag = search(:db_users, 'id:backup').first
+backup_pwd = backup_bag['password']
+backup_hashed = backup_bag['hashed']
+
 user 'backup' do
   action :create
   home '/home/backup'	# formal, won't be used
-  shell '/sbin/nologin'
-  password '$1$nkcLJNGX$lsux6kr9wJ4XJabcyoj3t/'	# "devops"
+  shell '/bin/bash'
+  password backup_hashed
+end
+
+mysql_database_user 'backup' do
+  connection mysql_connection_info
+  password   backup_pwd
+  action     :create
 end
 
 backup_dir = '/opt/backups'
@@ -125,22 +128,19 @@ directory backup_dir do
 end
 
 #
-# Create cron.d entry
+# Create cron.d entries
 
-dump_cmd = "/usr/bin/mysqldump #{mysql_socket} -p#{mysql_pwd}"
+dump_cmd = "/usr/bin/mysqldump #{mysql_socket} -p#{backup_pwd}"
 
 #
 # Unfortunately, cron_d resource does not support multiple commands
 # per single file under /etc/cron.d, so creating 2 files.
 
-cron_d 'mysql_backup_stage' do
-  minute  '*/5'
-  command "#{dump_cmd} stage_db > #{backup_dir}/stage_db.sql"
-  user 'root'
-end
-
-cron_d 'mysql_backup_prod' do
-  minute  '*/5'
-  command "#{dump_cmd} prod_db > #{backup_dir}/prod_db.sql"
-  user 'root'
+db_dbs.each do |db_name|
+  cron_name = 'mysql_backup_' + db_name
+  cron_d cron_name do
+    minute  '*/5'
+    command "#{dump_cmd} #{db_name} > #{backup_dir}/#{db_name}.sql"
+    user 'backup'
+  end
 end

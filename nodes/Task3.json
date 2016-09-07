@@ -970,14 +970,30 @@
       "booleans": {
 
       }
+    },
+    "Task3": {
+      "mysql": {
+        "instance_suffix": "t3",
+        "instance_name": "mysql-t3",
+        "port": 3306,
+        "version": "5.6.29-2",
+        "db_users": [
+          "service_prod",
+          "service_stage"
+        ],
+        "db_dbs": [
+          "prod_db",
+          "stage_db"
+        ]
+      }
     }
   },
   "automatic": {
     "memory": {
       "swap": {
-        "cached": "40kB",
+        "cached": "0kB",
         "total": "1015804kB",
-        "free": "1015708kB"
+        "free": "1015804kB"
       },
       "hugepages": {
         "total": "0",
@@ -986,23 +1002,23 @@
         "surplus": "0"
       },
       "total": "1922052kB",
-      "free": "359272kB",
-      "buffers": "48836kB",
-      "cached": "774600kB",
-      "active": "473552kB",
-      "inactive": "919832kB",
-      "dirty": "128kB",
+      "free": "1351896kB",
+      "buffers": "21400kB",
+      "cached": "311620kB",
+      "active": "226252kB",
+      "inactive": "218740kB",
+      "dirty": "7744kB",
       "writeback": "0kB",
-      "anon_pages": "570020kB",
-      "mapped": "19600kB",
-      "slab": "139512kB",
-      "slab_reclaimable": "80100kB",
-      "slab_unreclaim": "59412kB",
-      "page_tables": "5580kB",
+      "anon_pages": "111948kB",
+      "mapped": "10808kB",
+      "slab": "98576kB",
+      "slab_reclaimable": "40972kB",
+      "slab_unreclaim": "57604kB",
+      "page_tables": "2776kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "1976828kB",
-      "committed_as": "1049012kB",
+      "committed_as": "251572kB",
       "vmalloc_total": "34359738367kB",
       "vmalloc_used": "32000kB",
       "vmalloc_chunk": "34359687672kB",
@@ -1174,7 +1190,7 @@
           ],
           "encapsulation": "Ethernet",
           "addresses": {
-            "08:00:27:9E:B0:5B": {
+            "08:00:27:EF:82:1D": {
               "family": "lladdr"
             },
             "172.28.128.3": {
@@ -1184,7 +1200,7 @@
               "broadcast": "172.28.128.255",
               "scope": "Global"
             },
-            "fe80::a00:27ff:fe9e:b05b": {
+            "fe80::a00:27ff:feef:821d": {
               "family": "inet6",
               "prefixlen": "64",
               "scope": "Link",
@@ -1194,9 +1210,6 @@
             }
           },
           "state": "up",
-          "arp": {
-            "172.28.128.2": "08:00:27:82:1d:3c"
-          },
           "routes": [
             {
               "destination": "172.28.128.0/24",
@@ -1244,15 +1257,15 @@
         "interfaces": {
           "lo": {
             "rx": {
-              "bytes": "48159",
-              "packets": "617",
+              "bytes": "0",
+              "packets": "0",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
             },
             "tx": {
-              "bytes": "48159",
-              "packets": "617",
+              "bytes": "0",
+              "packets": "0",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
@@ -1262,16 +1275,16 @@
           "eth0": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "6606691",
-              "packets": "96470",
+              "bytes": "2084691",
+              "packets": "33551",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "217074277",
-              "packets": "269533",
+              "bytes": "64011118",
+              "packets": "78373",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -1280,16 +1293,16 @@
           "eth1": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "22674",
-              "packets": "174",
+              "bytes": "1272",
+              "packets": "10",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "29073",
-              "packets": "89",
+              "bytes": "1423",
+              "packets": "3",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -1300,7 +1313,7 @@
     },
     "ipaddress": "10.0.2.15",
     "macaddress": "08:00:27:C4:E3:20",
-    "ip6address": "fe80::a00:27ff:fe9e:b05b",
+    "ip6address": "fe80::a00:27ff:fec4:e320",
     "cpu": {
       "0": {
         "vendor_id": "GenuineIntel",
@@ -1308,7 +1321,7 @@
         "model": "42",
         "model_name": "Intel(R) Core(TM) i7-2760QM CPU @ 2.40GHz",
         "stepping": "7",
-        "mhz": "2392.232",
+        "mhz": "2392.230",
         "cache_size": "6144 KB",
         "physical_id": "0",
         "core_id": "0",
@@ -1366,7 +1379,7 @@
         "model": "42",
         "model_name": "Intel(R) Core(TM) i7-2760QM CPU @ 2.40GHz",
         "stepping": "7",
-        "mhz": "2392.232",
+        "mhz": "2392.230",
         "cache_size": "6144 KB",
         "physical_id": "0",
         "core_id": "1",
@@ -1430,14 +1443,6 @@
       "processor": "x86_64",
       "os": "GNU/Linux",
       "modules": {
-        "iptable_filter": {
-          "size": "2793",
-          "refcount": "1"
-        },
-        "ip_tables": {
-          "size": "17831",
-          "refcount": "1"
-        },
         "vboxsf": {
           "size": "37731",
           "refcount": "4",
@@ -1445,12 +1450,20 @@
         },
         "ipv6": {
           "size": "336282",
-          "refcount": "36"
+          "refcount": "28"
         },
         "sg": {
           "size": "29318",
           "refcount": "0",
           "version": "3.5.34"
+        },
+        "i2c_piix4": {
+          "size": "11232",
+          "refcount": "0"
+        },
+        "i2c_core": {
+          "size": "29132",
+          "refcount": "1"
         },
         "vboxguest": {
           "size": "284807",
@@ -1461,14 +1474,6 @@
           "size": "134863",
           "refcount": "0",
           "version": "7.3.21-k8-NAPI"
-        },
-        "i2c_piix4": {
-          "size": "11232",
-          "refcount": "0"
-        },
-        "i2c_core": {
-          "size": "29132",
-          "refcount": "1"
         },
         "ext4": {
           "size": "379655",
@@ -1722,27 +1727,6 @@
           "uid": 498,
           "shell": "/bin/false",
           "gecos": ""
-        },
-        "mysql": {
-          "dir": "/var/lib/mysql",
-          "gid": 27,
-          "uid": 27,
-          "shell": "/bin/bash",
-          "gecos": "MySQL Server"
-        },
-        "backup": {
-          "dir": "/home/backup",
-          "gid": 501,
-          "uid": 501,
-          "shell": "/sbin/nologin",
-          "gecos": ""
-        },
-        "apache": {
-          "dir": "/var/www",
-          "gid": 48,
-          "uid": 48,
-          "shell": "/sbin/nologin",
-          "gecos": "Apache"
         }
       },
       "group": {
@@ -1984,24 +1968,6 @@
           "members": [
 
           ]
-        },
-        "mysql": {
-          "gid": 27,
-          "members": [
-
-          ]
-        },
-        "backup": {
-          "gid": 501,
-          "members": [
-
-          ]
-        },
-        "apache": {
-          "gid": 48,
-          "members": [
-
-          ]
         }
       }
     },
@@ -2019,13 +1985,13 @@
     "filesystem": {
       "/dev/mapper/VolGroup-lv_root": {
         "kb_size": "39645804",
-        "kb_used": "1595244",
-        "kb_available": "36030004",
-        "percent_used": "5%",
+        "kb_used": "916584",
+        "kb_available": "36708664",
+        "percent_used": "3%",
         "mount": "/",
         "total_inodes": "2526384",
-        "inodes_used": "49741",
-        "inodes_available": "2476643",
+        "inodes_used": "30944",
+        "inodes_available": "2495440",
         "inodes_percent_used": "2%",
         "fs_type": "ext4",
         "mount_options": [
@@ -2067,8 +2033,8 @@
       },
       "vagrant": {
         "kb_size": "488367104",
-        "kb_used": "411746304",
-        "kb_available": "76620800",
+        "kb_used": "411054592",
+        "kb_available": "77312512",
         "percent_used": "85%",
         "mount": "/vagrant",
         "total_inodes": "1000",
@@ -2084,8 +2050,8 @@
       },
       "v-csn-51fac37eb": {
         "kb_size": "488367104",
-        "kb_used": "411746304",
-        "kb_available": "76620800",
+        "kb_used": "411054592",
+        "kb_available": "77312512",
         "percent_used": "85%",
         "mount": "/tmp/vagrant-chef/0a49879802a6881656e2d7fcece3657f/nodes",
         "total_inodes": "1000",
@@ -2099,12 +2065,12 @@
           "rw"
         ]
       },
-      "v-csc-621eb5c1e": {
+      "v-csc-77135c2da": {
         "kb_size": "488384532",
-        "kb_used": "403926796",
-        "kb_available": "84457736",
+        "kb_used": "403957688",
+        "kb_available": "84426844",
         "percent_used": "83%",
-        "mount": "/tmp/vagrant-chef/fdc49271069178672db3da8643672bcd/cookbooks",
+        "mount": "/tmp/vagrant-chef/5d2698b190868bd269653a45903cbfc6/cookbooks",
         "total_inodes": "1000",
         "inodes_used": "0",
         "inodes_available": "1000",
@@ -2118,8 +2084,8 @@
       },
       "v-csdb-6d829300c": {
         "kb_size": "488367104",
-        "kb_used": "411746304",
-        "kb_available": "76620800",
+        "kb_used": "411054592",
+        "kb_available": "77312512",
         "percent_used": "85%",
         "mount": "/tmp/vagrant-chef/c04100a8986bc888ce6c94192bf619b1/data_bags",
         "total_inodes": "1000",
@@ -2212,10 +2178,6 @@
       }
     },
     "languages": {
-      "perl": {
-        "version": "5.10.1",
-        "archname": "x86_64-linux-thread-multi"
-      },
       "lua": {
         "version": "5.1.4"
       },
@@ -2241,10 +2203,6 @@
         "gem_bin": "/opt/chef/embedded/bin/gem"
       },
       "c": {
-        "gcc": {
-          "version": "4.4.7",
-          "description": "gcc version 4.4.7 20120313 (Red Hat 4.4.7-17) (GCC) "
-        },
         "glibc": {
           "version": "2.12",
           "description": "GNU C Library stable release version 2.12, by Roland McGrath et al."
@@ -2274,33 +2232,19 @@
       }
     },
     "root_group": "root",
-    "uptime_seconds": 22254,
-    "uptime": "6 hours 10 minutes 54 seconds",
-    "idletime_seconds": 43778,
-    "idletime": "12 hours 09 minutes 38 seconds",
+    "uptime_seconds": 115,
+    "uptime": "1 minutes 55 seconds",
+    "idletime_seconds": 143,
+    "idletime": "2 minutes 23 seconds",
     "init_package": "init",
     "cloud_v2": null,
     "packages": {
-      "perl-DBI": {
-        "epoch": "0",
-        "version": "1.609",
-        "release": "4.el6",
-        "installdate": "1473213215",
-        "arch": "x86_64"
-      },
       "setup": {
         "epoch": "0",
         "version": "2.8.14",
         "release": "20.el6_4.1",
         "installdate": "1470035497",
         "arch": "noarch"
-      },
-      "mysql-community-server": {
-        "epoch": "0",
-        "version": "5.6.29",
-        "release": "2.el6",
-        "installdate": "1473213235",
-        "arch": "x86_64"
       },
       "basesystem": {
         "epoch": "0",
@@ -2309,26 +2253,12 @@
         "installdate": "1470035498",
         "arch": "noarch"
       },
-      "mysql-community-devel": {
-        "epoch": "0",
-        "version": "5.6.29",
-        "release": "2.el6",
-        "installdate": "1473213255",
-        "arch": "x86_64"
-      },
       "tzdata": {
         "epoch": "0",
         "version": "2016c",
         "release": "1.el6",
         "installdate": "1470035499",
         "arch": "noarch"
-      },
-      "apr-util": {
-        "epoch": "0",
-        "version": "1.3.9",
-        "release": "3.el6_0.1",
-        "installdate": "1473213277",
-        "arch": "x86_64"
       },
       "nss-softokn-freebl": {
         "epoch": "0",
@@ -2337,25 +2267,11 @@
         "installdate": "1470035506",
         "arch": "x86_64"
       },
-      "httpd-tools": {
-        "epoch": "0",
-        "version": "2.2.15",
-        "release": "54.el6.centos",
-        "installdate": "1473213278",
-        "arch": "x86_64"
-      },
       "ncurses-libs": {
         "epoch": "0",
         "version": "5.7",
         "release": "4.20090207.el6",
         "installdate": "1470035507",
-        "arch": "x86_64"
-      },
-      "httpd": {
-        "epoch": "0",
-        "version": "2.2.15",
-        "release": "54.el6.centos",
-        "installdate": "1473213279",
         "arch": "x86_64"
       },
       "libattr": {
@@ -2743,6 +2659,13 @@
         "installdate": "1470035518",
         "arch": "x86_64"
       },
+      "mysql-libs": {
+        "epoch": "0",
+        "version": "5.1.73",
+        "release": "7.el6",
+        "installdate": "1470035518",
+        "arch": "x86_64"
+      },
       "fipscheck": {
         "epoch": "0",
         "version": "1.2.0",
@@ -3069,98 +2992,7 @@
         "epoch": "0",
         "version": "12.13.37",
         "release": "1.el6",
-        "installdate": "1473213061",
-        "arch": "x86_64"
-      },
-      "perl-Pod-Escapes": {
-        "epoch": "1",
-        "version": "1.04",
-        "release": "141.el6_7.1",
-        "installdate": "1473213131",
-        "arch": "x86_64"
-      },
-      "perl-Module-Pluggable": {
-        "epoch": "1",
-        "version": "3.90",
-        "release": "141.el6_7.1",
-        "installdate": "1473213132",
-        "arch": "x86_64"
-      },
-      "perl-Pod-Simple": {
-        "epoch": "1",
-        "version": "3.13",
-        "release": "141.el6_7.1",
-        "installdate": "1473213132",
-        "arch": "x86_64"
-      },
-      "cvs": {
-        "epoch": "0",
-        "version": "1.11.23",
-        "release": "16.el6",
-        "installdate": "1473213138",
-        "arch": "x86_64"
-      },
-      "libstdc++-devel": {
-        "epoch": "0",
-        "version": "4.4.7",
-        "release": "17.el6",
-        "installdate": "1473213141",
-        "arch": "x86_64"
-      },
-      "glibc-headers": {
-        "epoch": "0",
-        "version": "2.12",
-        "release": "1.192.el6",
-        "installdate": "1473213144",
-        "arch": "x86_64"
-      },
-      "gcc": {
-        "epoch": "0",
-        "version": "4.4.7",
-        "release": "17.el6",
-        "installdate": "1473213146",
-        "arch": "x86_64"
-      },
-      "gettext": {
-        "epoch": "0",
-        "version": "0.17",
-        "release": "18.el6",
-        "installdate": "1473213148",
-        "arch": "x86_64"
-      },
-      "kernel-devel": {
-        "epoch": "0",
-        "version": "2.6.32",
-        "release": "642.4.2.el6",
-        "installdate": "1473213162",
-        "arch": "x86_64"
-      },
-      "flex": {
-        "epoch": "0",
-        "version": "2.5.35",
-        "release": "9.el6",
-        "installdate": "1473213164",
-        "arch": "x86_64"
-      },
-      "ncurses-devel": {
-        "epoch": "0",
-        "version": "5.7",
-        "release": "4.20090207.el6",
-        "installdate": "1473213166",
-        "arch": "x86_64"
-      },
-      "mysql-community-common": {
-        "epoch": "0",
-        "version": "5.6.29",
-        "release": "2.el6",
-        "installdate": "1473213208",
-        "arch": "x86_64"
-      },
-      "mysql-community-client": {
-        "epoch": "0",
-        "version": "5.6.29",
-        "release": "2.el6",
-        "installdate": "1473213214",
+        "installdate": "1473258344",
         "arch": "x86_64"
       },
       "libgcc": {
@@ -3170,25 +3002,11 @@
         "installdate": "1470035497",
         "arch": "x86_64"
       },
-      "numactl": {
-        "epoch": "0",
-        "version": "2.0.9",
-        "release": "2.el6",
-        "installdate": "1473213215",
-        "arch": "x86_64"
-      },
       "filesystem": {
         "epoch": "0",
         "version": "2.4.30",
         "release": "3.el6",
         "installdate": "1470035498",
-        "arch": "x86_64"
-      },
-      "mysql-community-libs-compat": {
-        "epoch": "0",
-        "version": "5.6.33",
-        "release": "2.el6",
-        "installdate": "1473213236",
         "arch": "x86_64"
       },
       "ncurses-base": {
@@ -3198,25 +3016,11 @@
         "installdate": "1470035498",
         "arch": "x86_64"
       },
-      "apr": {
-        "epoch": "0",
-        "version": "1.3.9",
-        "release": "5.el6_2",
-        "installdate": "1473213277",
-        "arch": "x86_64"
-      },
       "glibc-common": {
         "epoch": "0",
         "version": "2.12",
         "release": "1.192.el6",
         "installdate": "1470035502",
-        "arch": "x86_64"
-      },
-      "apr-util-ldap": {
-        "epoch": "0",
-        "version": "1.3.9",
-        "release": "3.el6_0.1",
-        "installdate": "1473213277",
         "arch": "x86_64"
       },
       "glibc": {
@@ -3225,13 +3029,6 @@
         "release": "1.192.el6",
         "installdate": "1470035507",
         "arch": "x86_64"
-      },
-      "mailcap": {
-        "epoch": "0",
-        "version": "2.1.31",
-        "release": "2.el6",
-        "installdate": "1473213278",
-        "arch": "noarch"
       },
       "bash": {
         "epoch": "0",
@@ -3967,97 +3764,13 @@
         "release": "6.1.el6",
         "installdate": "1470035576",
         "arch": "noarch"
-      },
-      "gpg-pubkey": {
-        "epoch": "0",
-        "version": "5072e1f5",
-        "release": "4e773e2a",
-        "installdate": "1473213185",
-        "arch": "(none)"
-      },
-      "perl-libs": {
-        "epoch": "4",
-        "version": "5.10.1",
-        "release": "141.el6_7.1",
-        "installdate": "1473213131",
-        "arch": "x86_64"
-      },
-      "perl-version": {
-        "epoch": "3",
-        "version": "0.77",
-        "release": "141.el6_7.1",
-        "installdate": "1473213132",
-        "arch": "x86_64"
-      },
-      "perl": {
-        "epoch": "4",
-        "version": "5.10.1",
-        "release": "141.el6_7.1",
-        "installdate": "1473213137",
-        "arch": "x86_64"
-      },
-      "cpp": {
-        "epoch": "0",
-        "version": "4.4.7",
-        "release": "17.el6",
-        "installdate": "1473213139",
-        "arch": "x86_64"
-      },
-      "kernel-headers": {
-        "epoch": "0",
-        "version": "2.6.32",
-        "release": "642.4.2.el6",
-        "installdate": "1473213142",
-        "arch": "x86_64"
-      },
-      "glibc-devel": {
-        "epoch": "0",
-        "version": "2.12",
-        "release": "1.192.el6",
-        "installdate": "1473213144",
-        "arch": "x86_64"
-      },
-      "gcc-c++": {
-        "epoch": "0",
-        "version": "4.4.7",
-        "release": "17.el6",
-        "installdate": "1473213147",
-        "arch": "x86_64"
-      },
-      "autoconf": {
-        "epoch": "0",
-        "version": "2.63",
-        "release": "5.1.el6",
-        "installdate": "1473213149",
-        "arch": "noarch"
-      },
-      "patch": {
-        "epoch": "0",
-        "version": "2.6",
-        "release": "6.el6",
-        "installdate": "1473213163",
-        "arch": "x86_64"
-      },
-      "bison": {
-        "epoch": "0",
-        "version": "2.4.1",
-        "release": "5.el6",
-        "installdate": "1473213166",
-        "arch": "x86_64"
-      },
-      "mysql-community-libs": {
-        "epoch": "0",
-        "version": "5.6.29",
-        "release": "2.el6",
-        "installdate": "1473213208",
-        "arch": "x86_64"
       }
     },
     "hostname": "Task3",
     "machinename": "Task3",
     "fqdn": "Task3",
     "domain": null,
-    "ohai_time": 1473235215.7441785,
+    "ohai_time": 1473258362.6231124,
     "block_device": {
       "ram0": {
         "size": "32768",
@@ -4259,12 +3972,12 @@
       "by_device": {
         "/dev/mapper/VolGroup-lv_root": {
           "kb_size": "39645804",
-          "kb_used": "1595244",
-          "kb_available": "36030004",
-          "percent_used": "5%",
+          "kb_used": "916584",
+          "kb_available": "36708664",
+          "percent_used": "3%",
           "total_inodes": "2526384",
-          "inodes_used": "49741",
-          "inodes_available": "2476643",
+          "inodes_used": "30944",
+          "inodes_available": "2495440",
           "inodes_percent_used": "2%",
           "fs_type": "ext4",
           "mount_options": [
@@ -4313,8 +4026,8 @@
         },
         "vagrant": {
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -4332,8 +4045,8 @@
         },
         "v-csn-51fac37eb": {
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -4349,10 +4062,10 @@
             "/tmp/vagrant-chef/0a49879802a6881656e2d7fcece3657f/nodes"
           ]
         },
-        "v-csc-621eb5c1e": {
+        "v-csc-77135c2da": {
           "kb_size": "488384532",
-          "kb_used": "403926796",
-          "kb_available": "84457736",
+          "kb_used": "403957688",
+          "kb_available": "84426844",
           "percent_used": "83%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -4365,13 +4078,13 @@
             "rw"
           ],
           "mounts": [
-            "/tmp/vagrant-chef/fdc49271069178672db3da8643672bcd/cookbooks"
+            "/tmp/vagrant-chef/5d2698b190868bd269653a45903cbfc6/cookbooks"
           ]
         },
         "v-csdb-6d829300c": {
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -4475,12 +4188,12 @@
       "by_mountpoint": {
         "/": {
           "kb_size": "39645804",
-          "kb_used": "1595244",
-          "kb_available": "36030004",
-          "percent_used": "5%",
+          "kb_used": "916584",
+          "kb_available": "36708664",
+          "percent_used": "3%",
           "total_inodes": "2526384",
-          "inodes_used": "49741",
-          "inodes_available": "2476643",
+          "inodes_used": "30944",
+          "inodes_available": "2495440",
           "inodes_percent_used": "2%",
           "fs_type": "rootfs",
           "mount_options": [
@@ -4530,8 +4243,8 @@
         },
         "/vagrant": {
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -4549,8 +4262,8 @@
         },
         "/tmp/vagrant-chef/0a49879802a6881656e2d7fcece3657f/nodes": {
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -4566,10 +4279,10 @@
             "v-csn-51fac37eb"
           ]
         },
-        "/tmp/vagrant-chef/fdc49271069178672db3da8643672bcd/cookbooks": {
+        "/tmp/vagrant-chef/5d2698b190868bd269653a45903cbfc6/cookbooks": {
           "kb_size": "488384532",
-          "kb_used": "403926796",
-          "kb_available": "84457736",
+          "kb_used": "403957688",
+          "kb_available": "84426844",
           "percent_used": "83%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -4582,13 +4295,13 @@
             "rw"
           ],
           "devices": [
-            "v-csc-621eb5c1e"
+            "v-csc-77135c2da"
           ]
         },
         "/tmp/vagrant-chef/c04100a8986bc888ce6c94192bf619b1/data_bags": {
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -4681,13 +4394,13 @@
         "/dev/mapper/VolGroup-lv_root,/": {
           "device": "/dev/mapper/VolGroup-lv_root",
           "kb_size": "39645804",
-          "kb_used": "1595244",
-          "kb_available": "36030004",
-          "percent_used": "5%",
+          "kb_used": "916584",
+          "kb_available": "36708664",
+          "percent_used": "3%",
           "mount": "/",
           "total_inodes": "2526384",
-          "inodes_used": "49741",
-          "inodes_available": "2476643",
+          "inodes_used": "30944",
+          "inodes_available": "2495440",
           "inodes_percent_used": "2%",
           "fs_type": "ext4",
           "mount_options": [
@@ -4732,8 +4445,8 @@
         "vagrant,/vagrant": {
           "device": "vagrant",
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "mount": "/vagrant",
           "total_inodes": "1000",
@@ -4750,8 +4463,8 @@
         "v-csn-51fac37eb,/tmp/vagrant-chef/0a49879802a6881656e2d7fcece3657f/nodes": {
           "device": "v-csn-51fac37eb",
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "mount": "/tmp/vagrant-chef/0a49879802a6881656e2d7fcece3657f/nodes",
           "total_inodes": "1000",
@@ -4765,13 +4478,13 @@
             "rw"
           ]
         },
-        "v-csc-621eb5c1e,/tmp/vagrant-chef/fdc49271069178672db3da8643672bcd/cookbooks": {
-          "device": "v-csc-621eb5c1e",
+        "v-csc-77135c2da,/tmp/vagrant-chef/5d2698b190868bd269653a45903cbfc6/cookbooks": {
+          "device": "v-csc-77135c2da",
           "kb_size": "488384532",
-          "kb_used": "403926796",
-          "kb_available": "84457736",
+          "kb_used": "403957688",
+          "kb_available": "84426844",
           "percent_used": "83%",
-          "mount": "/tmp/vagrant-chef/fdc49271069178672db3da8643672bcd/cookbooks",
+          "mount": "/tmp/vagrant-chef/5d2698b190868bd269653a45903cbfc6/cookbooks",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -4786,8 +4499,8 @@
         "v-csdb-6d829300c,/tmp/vagrant-chef/c04100a8986bc888ce6c94192bf619b1/data_bags": {
           "device": "v-csdb-6d829300c",
           "kb_size": "488367104",
-          "kb_used": "411746304",
-          "kb_available": "76620800",
+          "kb_used": "411054592",
+          "kb_available": "77312512",
           "percent_used": "85%",
           "mount": "/tmp/vagrant-chef/c04100a8986bc888ce6c94192bf619b1/data_bags",
           "total_inodes": "1000",
