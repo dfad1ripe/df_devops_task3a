@@ -1,6 +1,7 @@
 ---
 driver:
   name: vagrant
+  vm_hostname: Task3
 
 provisioner:
   name: chef_zero
@@ -15,4 +16,6 @@ suites:
   - name: default
     run_list:
       - recipe[Task3::default]
+      - recipe[Task3::apache]
+      - recipe[Task3::firewall]
     attributes:
