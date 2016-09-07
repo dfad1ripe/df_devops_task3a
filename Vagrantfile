@@ -88,8 +88,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.nodes_path = 'nodes'
     chef.data_bags_path = './data_bags'
     chef.run_list = [
-      'recipe[Task3::default]'
-#       'recipe[Task3::apache]'
+      'recipe[Task3::default]',
+      'recipe[Task3::apache]',
+      'recipe[Task3::firewall]'
     ]
   end
 end
